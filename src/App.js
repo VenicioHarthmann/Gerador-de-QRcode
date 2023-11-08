@@ -9,6 +9,7 @@ function validaCPF(cpf) {
 
   if (strCPF.length !== 11) return false;
 
+
   if ([
     '00000000000',
     '11111111111',
