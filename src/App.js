@@ -110,30 +110,36 @@ const PixPaymentPage = () => {
   const styles = {
     formContainer: {
       display: 'flex',
-      justifyContent: 'center',
+      flexDirection: 'column',
       alignItems: 'center',
+      justifyContent: 'center',
       height: '100vh',
       backgroundColor: '#f0f0f0',
+      padding: '1rem',
     },
     input: {
       width: '100%',
       padding: '0.75rem',
       fontSize: '1rem',
-      border: '1px solid #ccc',
-      borderRadius: '4px',
+      border: '1px solid #ccc', // Borda preta
+      borderRadius: '8px',
+      marginBottom: '1rem',
       outline: 'none',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      padding: '0.5rem 1rem',
+      color: '#333',
     },
     button: {
       backgroundColor: '#ff8000',
-      color: '#000', // Cor da fonte preta
+      color: '#fff',
       padding: '0.75rem 1rem',
-      border: '2px solid #000',
-      borderRadius: '4px',
+      border: '1px solid #000', // Borda preta restaurada
+      borderRadius: '8px',
       cursor: 'pointer',
       transition: 'background-color 0.2s',
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+      marginBottom: '1rem',
     },
-    
     buttonHover: {
       backgroundColor: '#ff9900',
     },
@@ -142,73 +148,74 @@ const PixPaymentPage = () => {
       padding: '2rem',
       borderRadius: '8px',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-      maxWidth: '400px',
-      textAlign: 'center',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
   };
 
   return (
     <div style={styles.formContainer}>
-      <div style={styles.formContainer}>
-        <div className="input-container">
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-            Chave PIX:
-            <input
-              type="text"
-              value={pixKey}
-              onChange={handleChavePixChange}
-              placeholder="Chave PIX"
-              style={styles.input}
-            />
-          </label>
-        </div>
-        <div className="input-container">
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-            Valor:
-            <input
-              type="text"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="Valor"
-              style={styles.input}
-            />
-          </label>
-        </div>
-        <div className="input-container">
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-            Cidade:
-            <input
-              type="text"
-              value={merchantCity}
-              onChange={(e) => setMerchantCity(e.target.value)}
-              placeholder="Cidade do Comerciante"
-              style={styles.input}
-            />
-          </label>
-        </div>
-        <div className="input-container">
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-            Descrição (opcional):
-            <input
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Descrição (opcional)"
-              style={styles.input}
-            />
-          </label>
-        </div>
-        <div className="button-container">
-          <button style={styles.button} onClick={handleGenerateQRCode}>
-            Gerar QR Code
-          </button>
-          <button style={styles.button} onClick={handleShowBRCode}>
-            Copia e Cola 
-          </button>
-        </div>
+      <div className="input-container">
+        <label style={{ fontWeight: 'bold' }}>
+          Chave PIX:
+          <input
+            type="text"
+            value={pixKey}
+            onChange={handleChavePixChange}
+            placeholder="Chave PIX"
+            style={styles.input}
+          />
+        </label>
+      </div>
+      <div className="input-container">
+        <label style={{ fontWeight: 'bold' }}>
+          Valor:
+          <input
+            type="text"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Valor"
+            style={styles.input}
+          />
+        </label>
+      </div>
+      <div className="input-container">
+        <label style={{ fontWeight: 'bold' }}>
+          Cidade:
+          <input
+            type="text"
+            value={merchantCity}
+            onChange={(e) => setMerchantCity(e.target.value)}
+            placeholder="Cidade do Comerciante"
+            style={styles.input}
+          />
+        </label>
+      </div>
+      <div className="input-container">
+        <label style={{ fontWeight: 'bold' }}>
+          Descrição (opcional):
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Descrição (opcional)"
+            style={styles.input}
+          />
+        </label>
+      </div>
+      <div className="button-container">
+        <button style={styles.button} onClick={handleGenerateQRCode}>
+          Gerar QR Code
+        </button>
+        <button style={styles.button} onClick={handleShowBRCode}>
+          Copia e Cola
+        </button>
       </div>
       <div style={styles.qrCodeContainer}>
-        {qrCode && <QRCode value={qrCode} size={256} style={{ marginBottom: '1.5rem' }} />}
+        {qrCode && <QRCode value={qrCode} size={256} style={{ marginBottom: '1.5rem' }} />
+        }
       </div>
     </div>
   );
