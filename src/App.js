@@ -9,7 +9,6 @@ function validaCPF(cpf) {
 
   if (strCPF.length !== 11) return false;
 
-
   if ([
     '00000000000',
     '11111111111',
@@ -126,14 +125,15 @@ const PixPaymentPage = () => {
     },
     button: {
       backgroundColor: '#ff8000',
-      color: '#ffffff',
-      fontSize: '1rem',
+      color: '#000', // Cor da fonte preta
       padding: '0.75rem 1rem',
-      border: 'none',
+      border: '2px solid #000',
       borderRadius: '4px',
       cursor: 'pointer',
       transition: 'background-color 0.2s',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
     },
+    
     buttonHover: {
       backgroundColor: '#ff9900',
     },
